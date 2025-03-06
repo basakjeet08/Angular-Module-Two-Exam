@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AddComponent } from './components/management/add/add.component';
 import { DetailsComponent } from './components/management/details/details.component';
 import { ManagementComponent } from './components/management/management.component';
@@ -29,7 +28,11 @@ const homeRoutes: Routes = [
           { path: 'details', component: DetailsComponent },
         ],
       },
-      { path: 'checkout', component: CheckoutComponent },
+      {
+        path: 'checkout',
+        loadChildren: () =>
+          import('./checkout/checkout.module').then((m) => m.CheckoutModule),
+      },
     ],
   },
 ];
@@ -37,7 +40,6 @@ const homeRoutes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
-    CheckoutComponent,
     ManagementComponent,
     AddComponent,
     DetailsComponent,
