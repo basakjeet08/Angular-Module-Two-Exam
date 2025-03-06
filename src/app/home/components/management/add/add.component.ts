@@ -39,6 +39,9 @@ export class AddComponent implements OnInit {
         this.userInput.title = bookFound.title;
         this.userInput.author = bookFound.author;
         this.userInput.isbn = bookFound.isbn;
+      } else {
+        alert('Provided Id is wrong !!');
+        this.router.navigate(['../', 'details'], { relativeTo: this.route });
       }
     }
   }
