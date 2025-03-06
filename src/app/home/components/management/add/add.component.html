@@ -8,6 +8,7 @@
   *ngIf="!isLoading && !errorMessage"
   class="card-container col-container p-40 g-24"
   (ngSubmit)="onAddClick()"
+  #formContainer="ngForm"
 >
   <h3>Add a Book Page</h3>
 
@@ -61,7 +62,11 @@
 
   <!-- This is the button container -->
   <div class="row-container">
-    <button class="secondary-btn" type="submit">
+    <button
+      class="secondary-btn"
+      type="submit"
+      [disabled]="!formContainer.valid"
+    >
       {{ isEdit ? "Edit Book" : "Add Book" }}
     </button>
     <button class="destructive-btn" type="button" (click)="onCancelClick()">
