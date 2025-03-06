@@ -1,1 +1,17 @@
-<router-outlet />
+<!-- This is the navigation bar of the home component -->
+<header>
+  <nav class="row-container">
+    <a routerLink="management" routerLinkActive="active">Management</a>
+    <a routerLink="checkout" routerLinkActive="active">Checkout</a>
+  </nav>
+
+  <!-- This is the logout button -->
+  <button class="destructive-btn" (click)="onLogoutClick()">Logout</button>
+</header>
+
+<!-- This is the main component decided accordingly -->
+<main>
+  <div id="center-container">
+    <router-outlet />
+  </div>
+</main>

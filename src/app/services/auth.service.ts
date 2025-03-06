@@ -42,4 +42,9 @@ export class AuthService {
       })
     );
   }
+
+  // This function logs out the user
+  logout() {
+    localStorage.removeItem(this.USER_DATA_KEY);
+  }
 }
