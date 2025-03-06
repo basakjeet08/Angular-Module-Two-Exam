@@ -51,7 +51,9 @@
 
   <!-- This is the button container -->
   <div class="row-container">
-    <button class="secondary-btn" type="submit">Add Book</button>
+    <button class="secondary-btn" type="submit">
+      {{ isEdit ? "Edit Book" : "Add Book" }}
+    </button>
     <button class="destructive-btn" type="button" (click)="onCancelClick()">
       Cancel
     </button>
