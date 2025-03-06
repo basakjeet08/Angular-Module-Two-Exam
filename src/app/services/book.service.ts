@@ -33,4 +33,26 @@ export class BookService {
     this.bookList.push(book);
     this.setLocalBooks(this.bookList);
   }
+
+  // This function edits a particular book
+  editBook(editedBook: Book) {
+    this.bookList = this.bookList.map((book: Book) => {
+      if (book.id === editedBook.id) {
+        return {
+          ...book,
+          ...editedBook,
+        };
+      } else return book;
+    });
+
+    this.setLocalBooks(this.bookList);
+  }
+
+  // this function deletes a book
+  deleteBook(id: string) {
+    this.bookList = this.bookList.filter((book) => book.id !== id);
+    this.setLocalBooks(this.bookList);
+
+    return this.getBooks();
+  }
 }

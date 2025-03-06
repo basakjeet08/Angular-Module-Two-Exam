@@ -1,6 +1,14 @@
-<div class="card-container width" *ngFor="let book of bookList">
+<div class="card-container col-container width" *ngFor="let book of bookList">
   <h3>{{ book.title }}</h3>
   <p>{{ book.author }}</p>
   <p>{{ book.isbn }}</p>
   <p>{{ book.availability }}</p>
+
+  <!-- Button Container -->
+  <div class="row-container">
+    <button class="secondary-btn" (click)="onEditClick(book.id)">Edit</button>
+    <button class="destructive-btn" (click)="onDeleteClick(book.id)">
+      Delete
+    </button>
+  </div>
 </div>

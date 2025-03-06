@@ -18,4 +18,12 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.bookList = this.bookService.getBooks();
   }
+
+  // This function is invoked when the edit button is clicked
+  onEditClick(id: string) {}
+
+  // This function is invoked when the delete button is clicked
+  onDeleteClick(id: string) {
+    this.bookList = this.bookService.deleteBook(id);
+  }
 }
