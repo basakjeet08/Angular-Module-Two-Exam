@@ -16,6 +16,7 @@ export class AuthComponent {
     role: '',
   };
 
+  // Injecting the required dependencies
   constructor(
     private authService: AuthService,
     private router: Router,
