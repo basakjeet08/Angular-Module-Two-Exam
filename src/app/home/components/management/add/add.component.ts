@@ -27,7 +27,7 @@ export class AddComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
+    const id = this.route.snapshot.queryParams['id'];
 
     if (id) {
       const bookFound = this.bookService.getBookById(id);
@@ -65,7 +65,7 @@ export class AddComponent implements OnInit {
       );
     }
 
-    this.router.navigate(['../../', 'details'], { relativeTo: this.route });
+    this.router.navigate(['../', 'details'], { relativeTo: this.route });
   }
 
   // This funciton is invoked when the user clicks cancel

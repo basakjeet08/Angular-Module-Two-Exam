@@ -26,7 +26,10 @@ export class DetailsComponent implements OnInit {
 
   // This function is invoked when the edit button is clicked
   onEditClick(id: string) {
-    this.router.navigate(['../', 'add', id], { relativeTo: this.route });
+    this.router.navigate(['../', 'add'], {
+      relativeTo: this.route,
+      queryParams: { id: id },
+    });
   }
 
   // This function is invoked when the delete button is clicked

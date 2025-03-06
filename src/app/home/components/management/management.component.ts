@@ -11,6 +11,6 @@ export class ManagementComponent {
 
   // This function is invoked when the add book button is clicked
   onAddClick() {
-    this.router.navigate(['add', ''], { relativeTo: this.route });
+    this.router.navigate(['add'], { relativeTo: this.route });
   }
 }
