@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AddComponent } from './components/management/add/add.component';
 import { DetailsComponent } from './components/management/details/details.component';
-import { ManagementComponent } from './components/management/management.component';
+import { ManagementComponent } from './management/management.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 import { authGuard } from './guard/auth.guard';
