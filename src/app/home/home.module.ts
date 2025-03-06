@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 import { authGuard } from './guard/auth.guard';
 import { SharedModule } from '../shared/shared.module';
@@ -32,11 +31,6 @@ const homeRoutes: Routes = [
 
 @NgModule({
   declarations: [HomeComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule.forChild(homeRoutes),
-    SharedModule,
-  ],
+  imports: [CommonModule, RouterModule.forChild(homeRoutes)],
 })
 export class HomeModule {}

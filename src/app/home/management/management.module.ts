@@ -8,6 +8,7 @@ import { librarianGuard } from '../guard/librarian.guard';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 
+// These are the management routes
 const routes: Routes = [
   {
     path: '',
