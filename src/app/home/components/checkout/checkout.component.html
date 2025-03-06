@@ -1,19 +1,29 @@
-<div class="col-container center" *ngFor="let book of bookList">
-  <div class="card-container col-container width">
-    <h3>{{ book.title }}</h3>
-    <p>Author : {{ book.author }}</p>
-    <p>ISBN : {{ book.isbn }}</p>
-    <p>
-      Availibility : {{ book.availability ? "Available" : "Not Available" }}
-    </p>
+<!-- This is the loading component -->
+<app-loader *ngIf="isLoading" />
 
-    <!-- Button Container -->
-    <div class="row-container">
-      <button class="secondary-btn" (click)="toggleBookAvailibility(book.id)">
-        {{ book.availability ? "Check Out" : "Return" }}
-      </button>
+<!-- Error State -->
+<p class="error-text" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<!-- Container for Idle Screen -->
+<div class="col-container" *ngIf="!isLoading && !errorMessage">
+  <div class="col-container center" *ngFor="let book of bookList">
+    <!-- Card Component for the Books -->
+    <div class="card-container col-container width">
+      <h3>{{ book.title }}</h3>
+      <p>Author : {{ book.author }}</p>
+      <p>ISBN : {{ book.isbn }}</p>
+      <p>
+        Availibility : {{ book.availability ? "Available" : "Not Available" }}
+      </p>
+
+      <!-- Button Container -->
+      <div class="row-container">
+        <button class="secondary-btn" (click)="toggleBookAvailibility(book.id)">
+          {{ book.availability ? "Check Out" : "Return" }}
+        </button>
+      </div>
     </div>
-  </div>
 
-  <hr />
+    <hr />
+  </div>
 </div>

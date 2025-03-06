@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { tap, timer } from 'rxjs';
 import { User } from '../Models/User';
+import { UserRole } from '../Models/UserRole';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -31,7 +32,10 @@ export class AuthService {
   }
 
   // This function mocks a api call with the delay time of 2 seconds
-  mockLoginUser(user: User) {
+  mockLoginUser(name: string, role: UserRole) {
+    const user = new User(name, role);
+
+    // Mocking a api call
     return timer(2000).pipe(
       tap(() => {
         // Setting the user at this execution context

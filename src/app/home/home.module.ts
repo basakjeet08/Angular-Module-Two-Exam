@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home.component';
 import { authGuard } from './guard/auth.guard';
 import { librarianGuard } from './guard/librarian.guard';
+import { SharedModule } from '../shared/shared.module';
 
 // These are the routes for the home
 const homeRoutes: Routes = [
@@ -41,6 +42,11 @@ const homeRoutes: Routes = [
     AddComponent,
     DetailsComponent,
   ],
-  imports: [CommonModule, FormsModule, RouterModule.forChild(homeRoutes)],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule.forChild(homeRoutes),
+    SharedModule,
+  ],
 })
 export class HomeModule {}

@@ -1,4 +1,12 @@
+<!-- Loading State -->
+<app-loader *ngIf="isLoading" />
+
+<!-- Error State -->
+<p class="error-text" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<!-- Idle State -->
 <form
+  *ngIf="!isLoading && !errorMessage"
   class="card-container col-container p-40 g-24"
   (ngSubmit)="onLoginClick()"
   #formContainer="ngForm"
@@ -23,20 +31,28 @@
   </div>
 
   <!-- Container for the Role input -->
-  <div class="col-container">
-    <input
-      type="text"
-      name="role"
-      placeholder="Role (Librarian / Member)"
-      required
-      [(ngModel)]="userInput.role"
-      #role="ngModel"
-    />
+  <div class="row-container center">
+    <!-- Option Librarian -->
+    <label>
+      <input
+        type="radio"
+        name="role"
+        value="Librarian"
+        [(ngModel)]="userInput.role"
+      />
+      Librarian
+    </label>
 
-    <!-- Error text for the role input -->
-    <p class="error-text" *ngIf="!role.valid && role.touched">
-      Please provide the Role
-    </p>
+    <!-- Option Member -->
+    <label>
+      <input
+        type="radio"
+        name="role"
+        value="Member"
+        [(ngModel)]="userInput.role"
+      />
+      Member
+    </label>
   </div>
 
   <!-- This is the login button -->

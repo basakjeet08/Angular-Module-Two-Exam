@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../Models/Book';
+import { map, tap, timer } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BookService {
@@ -36,17 +37,18 @@ export class BookService {
 
   // Toggle Book Availibility
   toggleBookAvailibility(id: string) {
-    this.bookList = this.bookList.map((book) => {
-      if (book.id === id) {
-        return { ...book, availability: !book.availability };
-      } else {
-        return book;
-      }
-    });
-
-    this.setLocalBooks(this.bookList);
-
-    return this.getBooks();
+    // Mocking a api call
+    return timer(2000).pipe(
+      map(() => {
+        return this.bookList.map((book) =>
+          book.id === id ? { ...book, availability: !book.availability } : book
+        );
+      }),
+      tap((bookList: Book[]) => {
+        this.bookList = bookList;
+        return bookList;
+      })
+    );
   }
 
   getBookById(id: string) {

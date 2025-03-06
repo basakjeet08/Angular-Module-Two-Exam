@@ -11,6 +11,10 @@ export class CheckoutComponent {
   // This contains the book list locally
   bookList: Book[] = [];
 
+  // Loading and error state
+  isLoading: boolean = false;
+  errorMessage: string | null = null;
+
   // Injecting the necessary dependencies
   constructor(private bookService: BookService) {}
 
@@ -21,6 +25,19 @@ export class CheckoutComponent {
 
   // This function toggle the book availibility
   toggleBookAvailibility(id: string) {
-    this.bookList = this.bookService.toggleBookAvailibility(id);
+    // Setting Loading State
+    this.isLoading = true;
+
+    this.bookService.toggleBookAvailibility(id).subscribe({
+      next: (bookList: Book[]) => {
+        this.isLoading = false;
+        this.bookList = bookList;
+      },
+
+      error: (error: Error) => {
+        this.isLoading = false;
+        this.errorMessage = error.message;
+      },
+    });
   }
 }

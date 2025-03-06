@@ -13,3 +13,7 @@
 .g-24 {
   gap: 24px;
 }
+
+.center {
+  align-items: center;
+}

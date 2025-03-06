@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { User } from 'src/app/Models/User';
 import { UserRole } from 'src/app/Models/UserRole';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -13,8 +12,12 @@ export class AuthComponent {
   // This is the variable which stores the user input
   userInput = {
     name: '',
-    role: '',
+    role: 'Member',
   };
+
+  // Loading and error states of the Page
+  isLoading: boolean = false;
+  errorMessage: string | null = null;
 
   // Injecting the required dependencies
   constructor(
@@ -25,22 +28,26 @@ export class AuthComponent {
 
   // This function is invoked when the user clicks on the login button
   onLoginClick() {
+    // Setting the loading state
+    this.isLoading = true;
+
+    // Finding the user role
     const userRole =
       this.userInput.role === UserRole.LIBRARIAN
         ? UserRole.LIBRARIAN
         : UserRole.MEMBER;
 
     // Calling the api call for login
-    this.authService
-      .mockLoginUser(new User(this.userInput.name, userRole))
-      .subscribe({
-        next: () => {
-          this.router.navigate(['../', 'home'], { relativeTo: this.route });
-        },
+    this.authService.mockLoginUser(this.userInput.name, userRole).subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.router.navigate(['../', 'home'], { relativeTo: this.route });
+      },
 
-        error: (error: Error) => {
-          alert(`Error Occured ${error.message}`);
-        },
-      });
+      error: (error: Error) => {
+        this.isLoading = false;
+        this.errorMessage = error.message;
+      },
+    });
   }
 }
