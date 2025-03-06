@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 // This function checks if the user is authorized or logged in or not
 export const authGuard: CanActivateFn = (_route, _state) => {
