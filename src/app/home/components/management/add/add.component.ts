@@ -63,7 +63,7 @@ export class AddComponent implements OnInit {
           this.userInput.title,
           this.userInput.author,
           this.userInput.isbn,
-          false
+          true
         )
       );
     }
