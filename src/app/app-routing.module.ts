@@ -6,6 +6,8 @@ import { authGuard } from './guards/auth.guard';
 import { ManagementComponent } from './components/home/management/management.component';
 import { CheckoutComponent } from './components/home/checkout/checkout.component';
 import { librarianGuard } from './guards/librarian.guard';
+import { AddComponent } from './components/home/management/add/add.component';
+import { DetailsComponent } from './components/home/management/details/details.component';
 
 // These are the routes for the App Module
 const routes: Routes = [
@@ -21,6 +23,11 @@ const routes: Routes = [
         path: 'management',
         component: ManagementComponent,
         canActivate: [librarianGuard],
+        children: [
+          { path: '', redirectTo: 'details', pathMatch: 'full' },
+          { path: 'add', component: AddComponent },
+          { path: 'details', component: DetailsComponent },
+        ],
       },
       { path: 'checkout', component: CheckoutComponent },
     ],
