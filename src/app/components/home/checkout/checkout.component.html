@@ -1,1 +1,13 @@
-<p>checkout works!</p>
+<div class="card-container col-container width" *ngFor="let book of bookList">
+  <h3>{{ book.title }}</h3>
+  <p>{{ book.author }}</p>
+  <p>{{ book.isbn }}</p>
+  <p>{{ book.availability }}</p>
+
+  <!-- Button Container -->
+  <div class="row-container">
+    <button class="secondary-btn" (click)="toggleBookAvailibility(book.id)">
+      {{ book.availability ? "Check Out" : "Return" }}
+    </button>
+  </div>
+</div>

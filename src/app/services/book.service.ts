@@ -34,6 +34,21 @@ export class BookService {
     this.setLocalBooks(this.bookList);
   }
 
+  // Toggle Book Availibility
+  toggleBookAvailibility(id: string) {
+    this.bookList = this.bookList.map((book) => {
+      if (book.id === id) {
+        return { ...book, availability: !book.availability };
+      } else {
+        return book;
+      }
+    });
+
+    this.setLocalBooks(this.bookList);
+
+    return this.getBooks();
+  }
+
   // This function edits a particular book
   editBook(editedBook: Book) {
     this.bookList = this.bookList.map((book: Book) => {
