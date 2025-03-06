@@ -74,9 +74,12 @@ export class BookService {
 
   // this function deletes a book
   deleteBook(id: string) {
-    this.bookList = this.bookList.filter((book) => book.id !== id);
-    this.setLocalBooks(this.bookList);
-
-    return this.getBooks();
+    return timer(2000).pipe(
+      map(() => {
+        this.bookList = this.bookList.filter((book) => book.id !== id);
+        this.setLocalBooks(this.bookList);
+        return this.getBooks();
+      })
+    );
   }
 }

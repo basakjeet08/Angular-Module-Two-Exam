@@ -12,6 +12,10 @@ export class DetailsComponent implements OnInit {
   // This contains the book list locally
   bookList: Book[] = [];
 
+  // Various States for loading and error
+  isLoading: boolean = false;
+  errorMessage: string | null = null;
+
   // Injecting the necessary dependencies
   constructor(
     private bookService: BookService,
@@ -34,6 +38,19 @@ export class DetailsComponent implements OnInit {
 
   // This function is invoked when the delete button is clicked
   onDeleteClick(id: string) {
-    this.bookList = this.bookService.deleteBook(id);
+    // Setting the loading State
+    this.isLoading = true;
+
+    this.bookService.deleteBook(id).subscribe({
+      next: (bookList) => {
+        this.isLoading = false;
+        this.bookList = bookList;
+      },
+
+      error: (error: Error) => {
+        this.isLoading = false;
+        this.errorMessage = error.message;
+      },
+    });
   }
 }
