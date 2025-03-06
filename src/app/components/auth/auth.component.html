@@ -1,1 +1,46 @@
-<p>auth works!</p>
+<form
+  class="card-container col-container p-40 g-24"
+  (ngSubmit)="onLoginClick()"
+  #formContainer="ngForm"
+>
+  <h2>Mock Login Form</h2>
+
+  <!-- Container for the name field -->
+  <div class="col-container">
+    <input
+      type="text"
+      name="name"
+      placeholder="Enter your name"
+      required
+      [(ngModel)]="userInput.name"
+      #name="ngModel"
+    />
+
+    <!-- Error text for the name field -->
+    <p class="error-text" *ngIf="!name.valid && name.touched">
+      Please provide the name field
+    </p>
+  </div>
+
+  <!-- Container for the Role input -->
+  <div class="col-container">
+    <input
+      type="text"
+      name="role"
+      placeholder="Role (Librarian / Member)"
+      required
+      [(ngModel)]="userInput.role"
+      #role="ngModel"
+    />
+
+    <!-- Error text for the role input -->
+    <p class="error-text" *ngIf="!role.valid && role.touched">
+      Please provide the Role
+    </p>
+  </div>
+
+  <!-- This is the login button -->
+  <button class="secondary-btn" type="submit" [disabled]="!formContainer.valid">
+    Login
+  </button>
+</form>

@@ -1,0 +1,15 @@
+:host {
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-40 {
+  padding: 40px;
+}
+
+.g-24 {
+  gap: 24px;
+}
