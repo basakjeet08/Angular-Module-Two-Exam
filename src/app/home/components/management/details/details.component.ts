@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/Models/Book';
 import { BookService } from 'src/app/services/book.service';
 
@@ -12,7 +13,11 @@ export class DetailsComponent implements OnInit {
   bookList: Book[] = [];
 
   // Injecting the necessary dependencies
-  constructor(private bookService: BookService) {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   // Initializing the book list
   ngOnInit(): void {
@@ -20,7 +25,9 @@ export class DetailsComponent implements OnInit {
   }
 
   // This function is invoked when the edit button is clicked
-  onEditClick(id: string) {}
+  onEditClick(id: string) {
+    this.router.navigate(['../', 'add', id], { relativeTo: this.route });
+  }
 
   // This function is invoked when the delete button is clicked
   onDeleteClick(id: string) {

@@ -24,7 +24,7 @@ const homeRoutes: Routes = [
         canActivate: [librarianGuard],
         children: [
           { path: '', redirectTo: 'details', pathMatch: 'full' },
-          { path: 'add', component: AddComponent },
+          { path: 'add/:id', component: AddComponent },
           { path: 'details', component: DetailsComponent },
         ],
       },

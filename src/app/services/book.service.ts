@@ -49,10 +49,14 @@ export class BookService {
     return this.getBooks();
   }
 
+  getBookById(id: string) {
+    return this.bookList.find((book) => book.id === id);
+  }
+
   // This function edits a particular book
-  editBook(editedBook: Book) {
+  editBook(id: string, editedBook: Book) {
     this.bookList = this.bookList.map((book: Book) => {
-      if (book.id === editedBook.id) {
+      if (book.id === id) {
         return {
           ...book,
           ...editedBook,
