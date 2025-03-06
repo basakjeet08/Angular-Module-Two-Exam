@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from 'src/app/Models/Book';
 import { BookService } from 'src/app/services/book.service';
 
 @Component({
@@ -15,6 +14,10 @@ export class AddComponent implements OnInit {
     author: '',
     isbn: '',
   };
+
+  // States for loading and error
+  isLoading: boolean = false;
+  errorMessage: string | null = null;
 
   isEdit: boolean = false;
   bookId: string | null = null;
@@ -48,27 +51,35 @@ export class AddComponent implements OnInit {
 
   // This function is invoked when the user clicks on the add button
   onAddClick() {
-    if (this.isEdit) {
-      this.bookService.editBook(
-        this.bookId!,
-        new Book(
+    // Setting the loading state
+    this.isLoading = true;
+
+    const observer = this.isEdit
+      ? this.bookService.editBook(
+          this.bookId!,
           this.userInput.title,
           this.userInput.author,
           this.userInput.isbn
         )
-      );
-    } else {
-      this.bookService.addBook(
-        new Book(
+      : this.bookService.addBook(
           this.userInput.title,
           this.userInput.author,
-          this.userInput.isbn,
-          true
-        )
-      );
-    }
+          this.userInput.isbn
+        );
 
-    this.router.navigate(['../', 'details'], { relativeTo: this.route });
+    // Handling the response
+    observer.subscribe({
+      next: () => {
+        this.isLoading = false;
+        this.router.navigate(['../', 'details'], { relativeTo: this.route });
+        this.router.navigate(['../', 'details'], { relativeTo: this.route });
+      },
+
+      error: (error: Error) => {
+        this.isLoading = true;
+        this.errorMessage = error.message;
+      },
+    });
   }
 
   // This funciton is invoked when the user clicks cancel

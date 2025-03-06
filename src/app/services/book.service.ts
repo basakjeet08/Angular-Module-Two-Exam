@@ -30,9 +30,13 @@ export class BookService {
   }
 
   // This function pushes a new book
-  addBook(book: Book) {
-    this.bookList.push(book);
-    this.setLocalBooks(this.bookList);
+  addBook(title: string, author: string, isbn: string) {
+    return timer(2000).pipe(
+      map(() => {
+        this.bookList.push(new Book(title, author, isbn, true));
+        this.setLocalBooks(this.bookList);
+      })
+    );
   }
 
   // Toggle Book Availibility
@@ -56,17 +60,16 @@ export class BookService {
   }
 
   // This function edits a particular book
-  editBook(id: string, editedBook: Book) {
-    this.bookList = this.bookList.map((book: Book) => {
-      if (book.id === id) {
-        return {
-          ...book,
-          ...editedBook,
-        };
-      } else return book;
-    });
+  editBook(id: string, title: string, author: string, isbn: string) {
+    return timer(2000).pipe(
+      map(() => {
+        this.bookList = this.bookList.map((book: Book) =>
+          book.id === id ? { ...book, title, author, isbn } : book
+        );
 
-    this.setLocalBooks(this.bookList);
+        this.setLocalBooks(this.bookList);
+      })
+    );
   }
 
   // this function deletes a book

@@ -1,4 +1,14 @@
-<form class="card-container col-container p-40 g-24" (ngSubmit)="onAddClick()">
+<!-- Loading State -->
+<app-loader *ngIf="isLoading" />
+
+<!-- Error State -->
+<p class="error-text" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+<form
+  *ngIf="!isLoading && !errorMessage"
+  class="card-container col-container p-40 g-24"
+  (ngSubmit)="onAddClick()"
+>
   <h3>Add a Book Page</h3>
 
   <!-- Container for the title field -->
