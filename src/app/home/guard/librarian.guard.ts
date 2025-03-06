@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { UserRole } from 'src/app/Models/UserRole';
-import { AuthService } from 'src/app/services/auth.service';
+import { UserRole } from 'src/app/shared/Models/UserRole';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 export const librarianGuard: CanActivateFn = (_route, _state) => {
   // Injecting the necessary dependencies

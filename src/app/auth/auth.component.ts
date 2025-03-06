@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserRole } from 'src/app/Models/UserRole';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../shared/services/auth.service';
+import { UserRole } from '../shared/Models/UserRole';
 
 @Component({
   selector: 'app-auth',

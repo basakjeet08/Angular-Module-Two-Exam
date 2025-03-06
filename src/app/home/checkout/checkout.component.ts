@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Book } from 'src/app/Models/Book';
-import { BookService } from 'src/app/services/book.service';
+import { Book } from 'src/app/shared/Models/Book';
+import { BookService } from 'src/app/shared/services/book.service';
 
 @Component({
   selector: 'app-checkout',
