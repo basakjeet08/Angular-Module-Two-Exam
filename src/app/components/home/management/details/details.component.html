@@ -1,1 +1,6 @@
-<p>details works!</p>
+<div class="card-container width" *ngFor="let book of bookList">
+  <h3>{{ book.title }}</h3>
+  <p>{{ book.author }}</p>
+  <p>{{ book.isbn }}</p>
+  <p>{{ book.availability }}</p>
+</div>

@@ -1,1 +1,59 @@
-<p>add works!</p>
+<form class="card-container col-container p-40 g-24" (ngSubmit)="onAddClick()">
+  <h3>Add a Book Page</h3>
+
+  <!-- Container for the title field -->
+  <div class="col-container">
+    <input
+      type="text"
+      name="title"
+      placeholder="Enter the Title"
+      required
+      [(ngModel)]="userInput.title"
+      #title="ngModel"
+    />
+
+    <p class="error-text" *ngIf="!title.valid && title.touched">
+      Please enter the book Title
+    </p>
+  </div>
+
+  <!-- Container for the Author field -->
+  <div class="col-container">
+    <input
+      type="text"
+      name="author"
+      placeholder="Enter the Author"
+      required
+      [(ngModel)]="userInput.author"
+      #author="ngModel"
+    />
+
+    <p class="error-text" *ngIf="!author.valid && author.touched">
+      Please enter the book Author
+    </p>
+  </div>
+
+  <!-- Container for the ISBN field -->
+  <div class="col-container">
+    <input
+      type="text"
+      name="isbn"
+      placeholder="Enter the Isbn"
+      required
+      [(ngModel)]="userInput.isbn"
+      #isbn="ngModel"
+    />
+
+    <p class="error-text" *ngIf="!isbn.valid && isbn.touched">
+      Please enter the book IsBn
+    </p>
+  </div>
+
+  <!-- This is the button container -->
+  <div class="row-container">
+    <button class="secondary-btn" type="submit">Add Book</button>
+    <button class="destructive-btn" type="button" (click)="onCancelClick()">
+      Cancel
+    </button>
+  </div>
+</form>
