@@ -1,6 +1,7 @@
 {
   "hosting": {
     "public": "dist/angular-module-two-exam",
+    "site" : "angular-module-two-exam-13b1e",
     "ignore": [
       "firebase.json",
       "**/.*",

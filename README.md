@@ -28,4 +28,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Link for the Hosted URL
 
-https://angular-module-two-exam.web.app/auth
+https://angular-module-two-exam-13b1e.web.app/
